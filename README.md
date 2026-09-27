@@ -1,30 +1,78 @@
 # OnCue
 
-Desktop interview copilot for **macOS** and **Windows**, built with **Tauri 2** and **React 19**.
+[![Website](https://img.shields.io/badge/Website-oncue.top-2563eb?style=flat-square)](https://www.oncue.top)
+[![Release](https://img.shields.io/github/v/release/FluxAether/oncue?style=flat-square)](https://github.com/FluxAether/oncue/releases/latest)
+[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows-gray?style=flat-square)]()
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-Bring your own API keys. Settings, resumes, interview history, and keys stay on the local machine.
+> Local-first desktop AI interview copilot and career preparation engine for **macOS** and **Windows**, built with **Tauri 2** and **React 19**.
+>
+> 🌐 **Official Website / 官网**: [https://www.oncue.top](https://www.oncue.top)  
+> 🌐 **English Portal**: [https://www.oncue.top/en](https://www.oncue.top/en)  
+> ⬇️ **Download Installer**: [Latest Releases](https://github.com/FluxAether/oncue/releases/latest) · [Website Downloads](https://www.oncue.top)  
+> 💳 **Plans & BYOK Access**: [https://www.oncue.top/subscribe](https://www.oncue.top/subscribe) ([English](https://www.oncue.top/en/subscribe))
 
-## Features
+OnCue helps candidates prepare for and navigate interviews with confidence. It captures system audio and your microphone in real time with zero acoustic feedback, transcribes conversations with low latency, and generates structured answer suggestions in a floating copilot window. It also provides realistic voice-based mock interviews with comprehensive scoring reports, and deep resume optimization tailored to target job descriptions.
 
-- **Stealth Copilot** — Capture system audio and/or the microphone, transcribe in real time, and show structured answer suggestions in a floating window.
-- **AI Mock Interviews** — Generate a role-specific plan, ask follow-ups, score answers, and produce a practice report. Voice turns are supported.
-- **Resume Optimizer** — Match a resume against a job description and export an edited DOCX.
-- **History** — Review saved Copilot and mock-interview sessions, including recordings when they were captured.
+All resumes, interview recordings, transcripts, settings, and BYOK credentials remain securely on your local device.
 
-The UI supports Simplified Chinese, Traditional Chinese, and English. Theme follows Light, Dark, or System.
+## Features / 功能特性
+
+- **Stealth Copilot (实时隐形面试辅助)**:
+  - Dual-channel real-time audio capture: captures interviewer playback (system audio loopback) and/or your microphone with zero acoustic feedback.
+  - Low-latency real-time speech-to-text (STT) transcription.
+  - Live structured answer suggestions and question-by-question outlines in a discreet floating or docked window.
+  - Global shortcut toggles visibility instantly.
+  - [Learn more about Live Copilot](https://www.oncue.top/features/live-copilot)
+- **AI Mock Interviews (多轮语音实战模拟)**:
+  - Generate customized interview question sets based on your resume and target Job Description (JD).
+  - Practice with natural, multi-turn voice interaction and dynamic follow-up probing.
+  - Receive actionable diagnostic scoring reports covering technical depth, communication, and structure.
+  - [Learn more about Mock Interviews](https://www.oncue.top/features/mock-interview)
+- **Targeted Resume Optimizer (简历针对性优化)**:
+  - Deep semantic comparison between candidate resumes (PDF / DOCX) and target job specifications.
+  - Highlights quantifiable impact, enhances technical keywords, and exports formatted DOCX files.
+- **Session History & Review (面试复盘与录音回溯)**:
+  - Automatically saves Copilot sessions, questions, answer outlines, and optional native audio recordings for post-interview review and learning.
+- **Internationalization & Themes**:
+  - UI supports **Simplified Chinese (简体中文)**, **Traditional Chinese (繁體中文)**, and **English**.
+  - Built-in **Light**, **Dark**, and **System** appearance modes.
+
+## Download & Installation / 下载安装
+
+Pre-built releases for macOS and Windows are available on the [Official Website](https://www.oncue.top) and [GitHub Releases](https://github.com/FluxAether/oncue/releases/latest).
+
+| Platform | Requirements | Architecture | Package |
+| --- | --- | --- | --- |
+| **macOS** | macOS 14.2+ (for system audio) / 13.0+ | Universal (Apple Silicon & Intel) | [`.dmg`](https://github.com/FluxAether/oncue/releases/latest) |
+| **Windows** | Windows 10 / 11 (64-bit) | x64 | [`.exe` installer](https://github.com/FluxAether/oncue/releases/latest) |
+
+> **macOS Note**: System audio capture on macOS 14.2+ utilizes a bundled AudioTee sidecar. On first launch, grant **System Audio Recording** permissions when prompted. Screen recording is not used.
+>
+> **Windows Note**: System audio capture uses WASAPI loopback on your default playback device.
+
+## AI Providers (BYOK)
+
+OnCue supports both **Bring Your Own Key (BYOK)** and **Hosted Account Mode**:
+
+- **Speech-to-Text (STT)**:
+  - [Deepgram](https://deepgram.com) (Nova-2 / Nova-3, real-time streaming)
+  - Apple Speech Recognition (macOS local offline recognition)
+- **Large Language Models (LLM)**:
+  - [Google Gemini](https://ai.google.dev)
+  - [OpenAI](https://platform.openai.com)
+  - [Groq](https://groq.com)
+  - [Anthropic Claude](https://anthropic.com)
+
+API keys are configured in **Settings** and stored in the local SQLite database under the app data directory (`com.oncue.desktop`). They are never committed or uploaded to intermediary servers in BYOK mode.
+
+Use the copilot only where interview or assessment rules allow assistance tools.
 
 ## Requirements
 
 - Node.js 20+
 - Rust stable (for native builds)
 - On macOS 14.2+, a Swift toolchain if you want system-audio capture (AudioTee sidecar)
-- Your own keys:
-  - **Deepgram** for speech-to-text
-  - **Groq**, **OpenAI**, **Anthropic**, or **Google Gemini** for language features
-
-API keys are entered in **Settings**. They are stored in the local SQLite database under the app data directory (`com.oncue.desktop`). They are not committed to this repository.
-
-Use the copilot only where interview or assessment rules allow assistance tools.
 
 ## Getting Started
 
@@ -129,7 +177,17 @@ scripts/             Build, verify, and migration helpers
 
 ## Tech Stack
 
-Tauri 2 (Rust) · React 19 · TypeScript · Tailwind · Lucide · SQLite · Deepgram (STT) · Groq / OpenAI / Anthropic / Gemini (LLM)
+Tauri 2 (Rust) · React 19 · TypeScript · Tailwind CSS · Lucide · SQLite · Deepgram (STT) · Groq / OpenAI / Anthropic / Gemini (LLM)
+
+## Official Links / 官方资源
+
+- **Official Website (官网)**: [https://www.oncue.top](https://www.oncue.top)
+- **English Portal**: [https://www.oncue.top/en](https://www.oncue.top/en)
+- **Live Copilot Guide**: [https://www.oncue.top/features/live-copilot](https://www.oncue.top/features/live-copilot)
+- **Mock Interview Guide**: [https://www.oncue.top/features/mock-interview](https://www.oncue.top/features/mock-interview)
+- **Subscription & Credits**: [https://www.oncue.top/subscribe](https://www.oncue.top/subscribe) ([English](https://www.oncue.top/en/subscribe))
+- **GitHub Repository**: [https://github.com/FluxAether/oncue](https://github.com/FluxAether/oncue)
+- **Releases & Changelog**: [https://github.com/FluxAether/oncue/releases](https://github.com/FluxAether/oncue/releases)
 
 ## License
 
