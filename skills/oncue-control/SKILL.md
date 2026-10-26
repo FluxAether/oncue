@@ -1,6 +1,11 @@
 ---
 name: oncue-control
+version: "1.0.0"
+display_name: OnCue 控制
+display_name_en: OnCue Control
 description: 通过 OnCue App 的本地 CLI 查询应用、副驾和浮窗状态，按明确授权启动或停止音频会话、显示或隐藏副驾，并查询超时操作；系统未安装 OnCue 时从官方源校验下载并安装。用户提到安装或查询 OnCue、开始/停止监听或录音、打开/显示/隐藏副驾（包括 open/show/hide copilot）时使用。仅支持 macOS 和 Windows，不用于读取转录、录音、简历、凭据或更改账户与设置。
+description_zh: 通过 OnCue App 的本地 CLI 查询应用、副驾和浮窗状态，按明确授权启动或停止音频会话、显示或隐藏副驾，并查询超时操作；系统未安装 OnCue 时从官方源校验下载并安装。用户提到安装或查询 OnCue、开始/停止监听或录音、打开/显示/隐藏副驾（包括 open/show/hide copilot）时使用。仅支持 macOS 和 Windows，不用于读取转录、录音、简历、凭据或更改账户与设置。
+description_en: Use OnCue App's local CLI to query app, copilot, and floating-window status; start or stop audio sessions and show or hide the copilot only with explicit authorization; and query timed-out operations. If OnCue is not installed, download, verify, and install it from official sources. Use when the user asks to install or check OnCue, start/stop listening or recording, or open/show/hide the copilot. Supports macOS and Windows only. Do not use to read transcripts, recordings, resumes, or credentials, or to change accounts or settings.
 ---
 
 # OnCue Control
